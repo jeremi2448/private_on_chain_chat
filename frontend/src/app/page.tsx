@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { Lock, Send, Wallet, RefreshCw, Trash2, Mail } from "lucide-react";
+import { Lock, Send, Wallet, RefreshCw, Trash2, Mail, HelpCircle, X } from "lucide-react";
 import "./animations.css";
 // import { createInstance } from "fhevmjs"; // Uncomment when network is ready
 
@@ -19,6 +19,7 @@ export default function Home() {
   const [showAnimation, setShowAnimation] = useState(false);
   const [sentMessages, setSentMessages] = useState<any[]>([]);
   const [stats, setStats] = useState({ sent: 0, received: 0, lastMessage: null as string | null });
+  const [showHelp, setShowHelp] = useState(false);
 
   const connectWallet = async () => {
     if (!window.ethereum) {
@@ -189,16 +190,25 @@ export default function Home() {
             </div>
             <h1 className="font-bold text-lg tracking-tight">Private Chat</h1>
           </div>
-          <button
-            onClick={connectWallet}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${account
-              ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-              : "bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/20"
-              }`}
-          >
-            <Wallet className="w-4 h-4" />
-            {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : "Connect Wallet"}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowHelp(true)}
+              className="p-2 rounded-full hover:bg-slate-800 transition-colors"
+              title="Aide"
+            >
+              <HelpCircle className="w-5 h-5 text-slate-400" />
+            </button>
+            <button
+              onClick={connectWallet}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${account
+                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                : "bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/20"
+                }`}
+            >
+              <Wallet className="w-4 h-4" />
+              {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : "Connect Wallet"}
+            </button>
+          </div>
         </div>
 
         {/* Status Bar */}
@@ -343,6 +353,71 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+      {/* Help Modal */}
+      {showHelp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={() => setShowHelp(false)}>
+          <div className="bg-slate-900 rounded-2xl border border-slate-700 max-w-2xl w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-slate-900 border-b border-slate-800 p-6 flex justify-between items-center">
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                <HelpCircle className="w-6 h-6 text-indigo-400" />
+                Guide d'Utilisation
+              </h2>
+              <button onClick={() => setShowHelp(false)} className="p-2 hover:bg-slate-800 rounded-lg transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-6 space-y-6 text-sm">
+              <section>
+                <h3 className="font-semibold text-lg mb-3 text-indigo-400">🚀 Démarrage Rapide</h3>
+                <ol className="space-y-2 list-decimal list-inside text-slate-300">
+                  <li>Cliquez sur "Connect Wallet" pour connecter MetaMask</li>
+                  <li>Assurez-vous d'être sur le réseau Sepolia</li>
+                  <li>Obtenez du Sepolia ETH gratuit sur un faucet</li>
+                </ol>
+              </section>
+
+              <section>
+                <h3 className="font-semibold text-lg mb-3 text-purple-400">📤 Envoyer un Message</h3>
+                <ol className="space-y-2 list-decimal list-inside text-slate-300">
+                  <li>Entrez l'adresse Ethereum du destinataire (0x...)</li>
+                  <li>Tapez votre message (max 32 caractères)</li>
+                  <li>Cliquez sur Send et confirmez dans MetaMask</li>
+                  <li>Profitez de l'animation ! 💌</li>
+                </ol>
+              </section>
+
+              <section>
+                <h3 className="font-semibold text-lg mb-3 text-emerald-400">📊 Statistiques</h3>
+                <p className="text-slate-300 mb-2">Le dashboard affiche :</p>
+                <ul className="space-y-1 list-disc list-inside text-slate-400">
+                  <li><span className="text-indigo-400">Envoyés</span> : Messages que vous avez envoyés</li>
+                  <li><span className="text-purple-400">Reçus</span> : Messages reçus (cliquez 🔄 pour actualiser)</li>
+                  <li><span className="text-emerald-400">Total</span> : Somme des deux</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="font-semibold text-lg mb-3 text-yellow-400">🔒 Confidentialité</h3>
+                <p className="text-slate-300">Vos messages sont chiffrés avec <strong>FHE (Fully Homomorphic Encryption)</strong>. Seuls vous et le destinataire pouvez les lire !</p>
+              </section>
+
+              <section className="bg-slate-800/50 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 text-red-400">⚠️ Important</h3>
+                <ul className="space-y-1 list-disc list-inside text-slate-400 text-xs">
+                  <li>Maximum 32 caractères par message</li>
+                  <li>Vérifiez l'adresse avant d'envoyer (irréversible)</li>
+                  <li>Gateway Zama actuellement en mode dégradé</li>
+                </ul>
+              </section>
+
+              <div className="text-center pt-4 border-t border-slate-800">
+                <p className="text-xs text-slate-500">Pour plus de détails, consultez TUTORIAL.md sur GitHub</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
