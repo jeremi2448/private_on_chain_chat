@@ -222,23 +222,6 @@ Toutes les données sont **sauvegardées localement** dans votre navigateur.
 
 ---
 
-## 🎨 Captures d'Écran
-
-<div align="center">
-
-### Dashboard Principal
-![Dashboard](https://via.placeholder.com/600x400/1e293b/818cf8?text=Dashboard)
-
-### Envoi de Message
-![Send Message](https://via.placeholder.com/600x400/1e293b/818cf8?text=Send+Message)
-
-### Historique
-![History](https://via.placeholder.com/600x400/1e293b/818cf8?text=Message+History)
-
-</div>
-
----
-
 ## 🛠️ Développement
 
 ### Compiler les Contrats
@@ -337,12 +320,6 @@ Les contributions sont les bienvenues ! Voici comment participer :
 
 ---
 
-## 📄 License
-
-Ce projet est sous licence **MIT**. Voir [LICENSE](LICENSE) pour plus de détails.
-
----
-
 ## 🙏 Remerciements
 
 - [Zama](https://www.zama.ai/) - Pour la technologie FHE révolutionnaire
@@ -354,9 +331,11 @@ Ce projet est sous licence **MIT**. Voir [LICENSE](LICENSE) pour plus de détail
 
 ## 📞 Contact & Support
 
-- 🐛 **Issues** : [GitHub Issues](https://github.com/VOTRE_USERNAME/private-on-chain-chat/issues)
-- 💬 **Discussions** : [GitHub Discussions](https://github.com/VOTRE_USERNAME/private-on-chain-chat/discussions)
-- 📧 **Email** : votre.email@example.com
+- 🐛 **Issues** : [GitHub Issues](https://github.com/jeremi2448/private-on-chain-chat/issues)
+- 💬 **Discussions** : [GitHub Discussions](https://github.com/jeremi2448/private-on-chain-chat/discussions)
+- 📧 **Email** : treepiton@gmail.com
+- X  **Twitter** : @Tree14735795
+- **Discord** : rib2874
 
 ---
 
