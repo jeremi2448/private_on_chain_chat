@@ -196,7 +196,7 @@ export default function Home() {
             <button
               onClick={() => setShowHelp(true)}
               className="p-2 rounded-full hover:bg-slate-800 transition-colors"
-              title="Aide"
+              title="Help"
             >
               <HelpCircle className="w-5 h-5 text-slate-400" />
             </button>
@@ -227,11 +227,11 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
               <p className="text-2xl font-bold text-indigo-400">{stats.sent}</p>
-              <p className="text-xs text-slate-400 mt-1">Envoyés</p>
+              <p className="text-xs text-slate-400 mt-1">Sent</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-purple-400">{stats.received}</p>
-              <p className="text-xs text-slate-400 mt-1">Reçus</p>
+              <p className="text-xs text-slate-400 mt-1">Received</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-emerald-400">{stats.sent + stats.received}</p>
@@ -269,9 +269,9 @@ export default function Home() {
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-slate-200">Messages reçus</p>
+                  <p className="text-sm font-medium text-slate-200">Messages Received</p>
                   <p className="text-xs text-slate-400 mt-1">
-                    Vous avez {receivedMessages} message{receivedMessages > 1 ? 's' : ''}
+                    You have {receivedMessages} message{receivedMessages > 1 ? 's' : ''}
                   </p>
                 </div>
                 <div className="bg-indigo-500/20 px-3 py-1 rounded-full">
@@ -287,14 +287,14 @@ export default function Home() {
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
               <Send className="w-4 h-4" />
-              Messages Envoyés
+              Sent Messages
             </h3>
             <span className="text-xs text-slate-500">{sentMessages.length} total</span>
           </div>
 
           {sentMessages.length === 0 ? (
             <div className="text-center py-8 text-slate-500">
-              <p className="text-sm">Aucun message envoyé</p>
+              <p className="text-sm">No messages sent</p>
             </div>
           ) : (
             <div className="space-y-2">
@@ -303,7 +303,7 @@ export default function Home() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <p className="text-xs text-slate-400 mb-1">
-                        À: {msg.to.slice(0, 6)}...{msg.to.slice(-4)}
+                        To: {msg.to.slice(0, 6)}...{msg.to.slice(-4)}
                       </p>
                       <p className="text-sm text-slate-200 truncate">{msg.content}</p>
                     </div>
