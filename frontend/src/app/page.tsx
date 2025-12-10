@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { Lock, Send, Wallet, RefreshCw, Trash2 } from "lucide-react";
 // import { createInstance } from "fhevmjs"; // Uncomment when network is ready
 
-const CONTRACT_ADDRESS = "0x9D08bb2E3D18cC8Cf66b290b426E646e20383AC6";
+const CONTRACT_ADDRESS = "0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2";
 
 export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
@@ -31,6 +31,24 @@ export default function Home() {
     }
   };
 
+  // Helper function to encode text into 4 x uint64 chunks
+  const encodeTextToChunks = (text: string): bigint[] => {
+    // Pad or truncate to 32 characters
+    const paddedText = text.padEnd(32, '\0').slice(0, 32);
+    const chunks: bigint[] = [];
+
+    for (let i = 0; i < 4; i++) {
+      let chunk = BigInt(0);
+      for (let j = 0; j < 8; j++) {
+        const charCode = paddedText.charCodeAt(i * 8 + j);
+        chunk = chunk | (BigInt(charCode) << BigInt(j * 8));
+      }
+      chunks.push(chunk);
+    }
+
+    return chunks;
+  };
+
   const sendMessage = async () => {
     if (!newMessage || !account || !recipientAddress) {
       setStatus("Please fill all fields");
@@ -43,20 +61,38 @@ export default function Home() {
       return;
     }
 
+    // Validate message length
+    if (newMessage.length > 32) {
+      setStatus("Message too long (max 32 characters)");
+      return;
+    }
+
     setLoading(true);
     setStatus("Encrypting message...");
 
     try {
+      // Encode text to chunks
+      const chunks = encodeTextToChunks(newMessage);
+
       // TODO: Implement FHE encryption here once network is up
-      // const instance = await createInstance({ chainId: 11155111 });
+      // const instance = await createInstance({
+      //   chainId: 11155111,
+      //   kmsContractAddress: "0xbE0E383937d564D7FF0BC3b46c51f0bF8d5C311A",
+      //   aclContractAddress: "0xf0Ffdc93b7E186bC2f8CB3dAA75D86d1930A433D",
+      //   networkUrl: "https://rpc.sepolia.org",
+      //   gatewayUrl: "https://gateway.sepolia.zama.ai/",
+      // });
       // const input = instance.createEncryptedInput(CONTRACT_ADDRESS, account);
-      // input.add256(Number(newMessage));
+      // input.add64(chunks[0]);
+      // input.add64(chunks[1]);
+      // input.add64(chunks[2]);
+      // input.add64(chunks[3]);
       // const encrypted = input.encrypt();
 
       // Simulate delay for now
       await new Promise(r => setTimeout(r, 1000));
 
-      console.log("Message would be sent to:", recipientAddress, "Content:", newMessage);
+      console.log("Message would be sent to:", recipientAddress, "Content:", newMessage, "Chunks:", chunks);
       setStatus("Message sent (Simulated)");
       setNewMessage("");
       setRecipientAddress("");
@@ -130,12 +166,13 @@ export default function Home() {
             />
             <div className="flex gap-2">
               <input
-                type="number"
+                type="text"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Type a number to encrypt..."
+                placeholder="Type your message (max 32 chars)..."
                 className="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
                 disabled={!account || loading}
+                maxLength={32}
               />
               <button
                 onClick={sendMessage}
