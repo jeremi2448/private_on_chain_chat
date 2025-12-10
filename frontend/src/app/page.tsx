@@ -11,6 +11,7 @@ export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
   const [messages, setMessages] = useState<any[]>([]);
   const [newMessage, setNewMessage] = useState("");
+  const [recipientAddress, setRecipientAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Ready");
 
@@ -31,7 +32,17 @@ export default function Home() {
   };
 
   const sendMessage = async () => {
-    if (!newMessage || !account) return;
+    if (!newMessage || !account || !recipientAddress) {
+      setStatus("Please fill all fields");
+      return;
+    }
+
+    // Validate Ethereum address
+    if (!ethers.isAddress(recipientAddress)) {
+      setStatus("Invalid recipient address");
+      return;
+    }
+
     setLoading(true);
     setStatus("Encrypting message...");
 
@@ -45,9 +56,10 @@ export default function Home() {
       // Simulate delay for now
       await new Promise(r => setTimeout(r, 1000));
 
-      console.log("Message would be sent here:", newMessage);
+      console.log("Message would be sent to:", recipientAddress, "Content:", newMessage);
       setStatus("Message sent (Simulated)");
       setNewMessage("");
+      setRecipientAddress("");
     } catch (error) {
       console.error("Send failed:", error);
       setStatus("Send failed: Network unavailable");
@@ -107,22 +119,32 @@ export default function Home() {
 
         {/* Input Area */}
         <div className="p-4 bg-slate-900 border-t border-slate-800">
-          <div className="flex gap-2">
+          <div className="space-y-3">
             <input
-              type="number"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Type a number to encrypt..."
-              className="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
+              type="text"
+              value={recipientAddress}
+              onChange={(e) => setRecipientAddress(e.target.value)}
+              placeholder="Recipient address (0x...)"
+              className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
               disabled={!account || loading}
             />
-            <button
-              onClick={sendMessage}
-              disabled={!account || loading}
-              className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-xl transition-all shadow-lg shadow-indigo-500/20"
-            >
-              {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
-            </button>
+            <div className="flex gap-2">
+              <input
+                type="number"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                placeholder="Type a number to encrypt..."
+                className="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
+                disabled={!account || loading}
+              />
+              <button
+                onClick={sendMessage}
+                disabled={!account || loading}
+                className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-xl transition-all shadow-lg shadow-indigo-500/20"
+              >
+                {loading ? <RefreshCw className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
           <p className="text-xs text-slate-500 mt-2 text-center">
             Messages are encrypted end-to-end using FHE.
