@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { Lock, Send, Wallet, RefreshCw, Trash2 } from "lucide-react";
+import { Lock, Send, Wallet, RefreshCw, Trash2, Mail } from "lucide-react";
+import "./animations.css";
 // import { createInstance } from "fhevmjs"; // Uncomment when network is ready
 
 const CONTRACT_ADDRESS = "0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2";
@@ -14,6 +15,7 @@ export default function Home() {
   const [recipientAddress, setRecipientAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Ready");
+  const [showAnimation, setShowAnimation] = useState(false);
 
   const connectWallet = async () => {
     if (!window.ethereum) {
@@ -68,6 +70,7 @@ export default function Home() {
     }
 
     setLoading(true);
+    setShowAnimation(true);
     setStatus("Encrypting message...");
 
     try {
@@ -90,7 +93,7 @@ export default function Home() {
       // const encrypted = input.encrypt();
 
       // Simulate delay for now
-      await new Promise(r => setTimeout(r, 1000));
+      await new Promise(r => setTimeout(r, 2000)); // Longer for animation
 
       console.log("Message would be sent to:", recipientAddress, "Content:", newMessage, "Chunks:", chunks);
       setStatus("Message sent (Simulated)");
@@ -101,11 +104,25 @@ export default function Home() {
       setStatus("Send failed: Network unavailable");
     } finally {
       setLoading(false);
+      setTimeout(() => setShowAnimation(false), 500); // Hide animation after delay
     }
   };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-slate-950 text-slate-100 p-4 font-sans">
+
+      {/* Flying Message Animation */}
+      {showAnimation && (
+        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
+          <div className="animate-fly">
+            <div className="relative">
+              <Mail className="w-24 h-24 text-indigo-400 drop-shadow-2xl animate-pulse" />
+              <div className="absolute inset-0 bg-indigo-500/20 blur-3xl animate-ping"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="w-full max-w-md bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden">
 
         {/* Header */}
