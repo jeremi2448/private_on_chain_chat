@@ -17,6 +17,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Ready");
   const [showAnimation, setShowAnimation] = useState(false);
+  const [sentMessages, setSentMessages] = useState<any[]>([]);
+  const [stats, setStats] = useState({ sent: 0, received: 0, lastMessage: null as string | null });
 
   const connectWallet = async () => {
     if (!window.ethereum) {
@@ -33,6 +35,25 @@ export default function Home() {
       setStatus("Connection failed");
     }
   };
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('chatStats');
+      if (saved) {
+        const data = JSON.parse(saved);
+        setSentMessages(data.sentMessages || []);
+        setStats(data.stats || { sent: 0, received: 0, lastMessage: null });
+      }
+    }
+  }, []);
+
+  // Save to localStorage when stats or sentMessages change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('chatStats', JSON.stringify({ sentMessages, stats }));
+    }
+  }, [sentMessages, stats]);
 
   const loadMessages = async () => {
     if (!account) return;
@@ -114,6 +135,23 @@ export default function Home() {
       await new Promise(r => setTimeout(r, 2000)); // Longer for animation
 
       console.log("Message would be sent to:", recipientAddress, "Content:", newMessage, "Chunks:", chunks);
+
+      // Save sent message
+      const sentMsg = {
+        to: recipientAddress,
+        content: newMessage,
+        timestamp: new Date().toISOString(),
+        status: "Sent"
+      };
+      setSentMessages(prev => [sentMsg, ...prev]);
+
+      // Update stats
+      setStats(prev => ({
+        ...prev,
+        sent: prev.sent + 1,
+        lastMessage: new Date().toISOString()
+      }));
+
       setStatus("Message sent (Simulated)");
       setNewMessage("");
       setRecipientAddress("");
@@ -172,6 +210,24 @@ export default function Home() {
           </span>
         </div>
 
+        {/* Statistics Dashboard */}
+        <div className="px-6 py-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-b border-slate-800/50">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-2xl font-bold text-indigo-400">{stats.sent}</p>
+              <p className="text-xs text-slate-400 mt-1">Envoyés</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-purple-400">{stats.received}</p>
+              <p className="text-xs text-slate-400 mt-1">Reçus</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-emerald-400">{stats.sent + stats.received}</p>
+              <p className="text-xs text-slate-400 mt-1">Total</p>
+            </div>
+          </div>
+        </div>
+
         {/* Inbox */}
         <div className="h-[400px] overflow-y-auto p-6 space-y-4 bg-slate-950/30">
           <div className="flex items-center justify-between mb-4">
@@ -210,6 +266,44 @@ export default function Home() {
                   <span className="text-indigo-300 font-bold">{receivedMessages}</span>
                 </div>
               </div>
+            </div>
+          )}
+        </div>
+
+        {/* Sent Messages History */}
+        <div className="max-h-[300px] overflow-y-auto p-6 space-y-3 bg-slate-950/20 border-t border-slate-800/50">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+              <Send className="w-4 h-4" />
+              Messages Envoyés
+            </h3>
+            <span className="text-xs text-slate-500">{sentMessages.length} total</span>
+          </div>
+
+          {sentMessages.length === 0 ? (
+            <div className="text-center py-8 text-slate-500">
+              <p className="text-sm">Aucun message envoyé</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {sentMessages.slice(0, 5).map((msg, i) => (
+                <div key={i} className="bg-slate-800/30 p-3 rounded-lg border border-slate-700/30 hover:border-indigo-500/30 transition-colors">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <p className="text-xs text-slate-400 mb-1">
+                        À: {msg.to.slice(0, 6)}...{msg.to.slice(-4)}
+                      </p>
+                      <p className="text-sm text-slate-200 truncate">{msg.content}</p>
+                    </div>
+                    <div className="text-right ml-2">
+                      <p className="text-xs text-emerald-400">✓ {msg.status}</p>
+                      <p className="text-xs text-slate-500 mt-1">
+                        {new Date(msg.timestamp).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
