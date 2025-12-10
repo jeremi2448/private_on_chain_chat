@@ -11,6 +11,7 @@ const CONTRACT_ADDRESS = "0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2";
 export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
   const [messages, setMessages] = useState<any[]>([]);
+  const [receivedMessages, setReceivedMessages] = useState<number>(0);
   const [newMessage, setNewMessage] = useState("");
   const [recipientAddress, setRecipientAddress] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,6 +31,23 @@ export default function Home() {
     } catch (error) {
       console.error("Connection failed:", error);
       setStatus("Connection failed");
+    }
+  };
+
+  const loadMessages = async () => {
+    if (!account) return;
+
+    try {
+      // TODO: Implement contract call when FHE is available
+      // const provider = new ethers.BrowserProvider(window.ethereum);
+      // const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
+      // const count = await contract.getMessageCount();
+      // setReceivedMessages(Number(count));
+
+      // Simulate for now
+      console.log("Would fetch message count for:", account);
+    } catch (error) {
+      console.error("Failed to load messages:", error);
     }
   };
 
@@ -154,19 +172,45 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Messages Area */}
+        {/* Inbox */}
         <div className="h-[400px] overflow-y-auto p-6 space-y-4 bg-slate-950/30">
-          {messages.length === 0 ? (
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-semibold text-slate-300 flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              Inbox
+            </h3>
+            <button
+              onClick={loadMessages}
+              className="text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
+              disabled={!account}
+            >
+              <RefreshCw className="w-4 h-4" />
+            </button>
+          </div>
+          {!account ? (
             <div className="h-full flex flex-col items-center justify-center text-slate-500 gap-2">
               <Lock className="w-8 h-8 opacity-20" />
-              <p className="text-sm">No encrypted messages yet</p>
+              <p className="text-sm">Connect wallet to view messages</p>
+            </div>
+          ) : receivedMessages === 0 ? (
+            <div className="h-full flex flex-col items-center justify-center text-slate-500 gap-2">
+              <Mail className="w-8 h-8 opacity-20" />
+              <p className="text-sm">No messages received yet</p>
             </div>
           ) : (
-            messages.map((msg, i) => (
-              <div key={i} className="bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
-                <p className="text-sm text-slate-300">Encrypted Message #{i + 1}</p>
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-slate-200">Messages reçus</p>
+                  <p className="text-xs text-slate-400 mt-1">
+                    Vous avez {receivedMessages} message{receivedMessages > 1 ? 's' : ''}
+                  </p>
+                </div>
+                <div className="bg-indigo-500/20 px-3 py-1 rounded-full">
+                  <span className="text-indigo-300 font-bold">{receivedMessages}</span>
+                </div>
               </div>
-            ))
+            </div>
           )}
         </div>
 
