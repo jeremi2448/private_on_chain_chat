@@ -1,252 +1,252 @@
-# 📚 Guide d'Utilisation - Private On-Chain Chat
+# 📚 User Guide - Private On-Chain Chat
 
-Bienvenue sur **Private On-Chain Chat**, votre application de messagerie chiffrée sur blockchain !
+Welcome to **Private On-Chain Chat**, your encrypted messaging application on the blockchain!
 
-## 🚀 Démarrage Rapide
+## 🚀 Quick Start
 
-### Prérequis
-- ✅ Navigateur web (Chrome, Firefox, Brave, etc.)
-- ✅ Extension MetaMask installée
-- ✅ Compte MetaMask avec Sepolia ETH
+### Prerequisites
+- ✅ Web Browser (Chrome, Firefox, Brave, etc.)
+- ✅ MetaMask Extension installed
+- ✅ MetaMask Account with Sepolia ETH
 
-### Obtenir du Sepolia ETH (Gratuit)
-1. Visitez [Sepolia Faucet](https://sepoliafaucet.com/)
-2. Connectez votre wallet
-3. Demandez des ETH de test (gratuit)
+### Get Sepolia ETH (Free)
+1. Visit [Sepolia Faucet](https://sepoliafaucet.com/)
+2. Connect your wallet
+3. Request test ETH (free)
 
 ---
 
-## 📖 Guide Étape par Étape
+## 📖 Step-by-Step Guide
 
-### Étape 1 : Connexion du Wallet 🦊
+### Step 1: Connect Wallet 🦊
 
-1. **Cliquez sur "Connect Wallet"** (bouton en haut à droite)
-2. **MetaMask s'ouvre** → Sélectionnez votre compte
-3. **Confirmez** la connexion
-4. **Vérifiez** : Votre adresse apparaît (ex: `0x1234...5678`)
+1. **Click "Connect Wallet"** (button top right)
+2. **MetaMask opens** → Select your account
+3. **Confirm** connection
+4. **Verify**: Your address appears (e.g., `0x1234...5678`)
 
 ```
 ┌─────────────────────────────┐
-│  Private Chat  [0x12...78]  │ ← Adresse visible
+│  Private Chat  [0x12...78]  │ ← Visible Address
 └─────────────────────────────┘
 ```
 
 ---
 
-### Étape 2 : Consulter vos Statistiques 📊
+### Step 2: Check Your Statistics 📊
 
-Juste en dessous du header, vous verrez :
+Just below the header, you will see:
 
 ```
 ┌─────────────────────────────┐
-│  📊 Statistiques            │
-│  Envoyés: 5 | Reçus: 3 | 8  │
+│  📊 Statistics              │
+│  Sent: 5 | Received: 3 | 8  │
 └─────────────────────────────┘
 ```
 
-- **Envoyés** : Nombre de messages que vous avez envoyés
-- **Reçus** : Messages reçus (mis à jour avec le bouton 🔄)
-- **Total** : Somme des deux
+- **Sent**: Number of messages you have sent
+- **Received**: Messages received (updated with the 🔄 button)
+- **Total**: Sum of both
 
 ---
 
-### Étape 3 : Vérifier votre Inbox 📬
+### Step 3: Check Your Inbox 📬
 
-La section **Inbox** affiche les messages que vous avez reçus.
+The **Inbox** section displays messages you have received.
 
-**Actions** :
-- Cliquez sur **🔄** pour actualiser
-- Le compteur affiche le nombre de messages
+**Actions**:
+- Click **🔄** to refresh
+- The counter displays the number of messages
 
 ```
 ┌─────────────────────────────┐
 │  📬 Inbox          [🔄]     │
 │                             │
-│  Messages reçus             │
-│  Vous avez 3 messages   [3] │
+│  Messages Received          │
+│  You have 3 messages    [3] │
 └─────────────────────────────┘
 ```
 
-> **Note** : Les messages sont chiffrés. Seuls vous et l'expéditeur pouvez les lire !
+> **Note**: Messages are encrypted. Only you and the sender can read them!
 
 ---
 
-### Étape 4 : Consulter l'Historique 📤
+### Step 4: Check History 📤
 
-La section **Messages Envoyés** montre vos 5 derniers messages :
+The **Sent Messages** section shows your last 5 messages:
 
 ```
 ┌─────────────────────────────┐
-│  📤 Envoyés (5 total)       │
+│  📤 Sent (5 total)          │
 │  ┌─────────────────────────┐│
-│  │ À: 0x1234...5678        ││
+│  │ To: 0x1234...5678       ││
 │  │ "Hello World"           ││
-│  │ ✓ Envoyé      14:30     ││
+│  │ ✓ Sent        14:30     ││
 │  └─────────────────────────┘│
 └─────────────────────────────┘
 ```
 
-**Informations affichées** :
-- Adresse du destinataire (tronquée)
-- Contenu du message
-- Statut : ✓ Envoyé
-- Heure d'envoi
+**Displayed Information**:
+- Recipient address (truncated)
+- Message content
+- Status: ✓ Sent
+- Time sent
 
 ---
 
-### Étape 5 : Envoyer un Message 💌
+### Step 5: Send a Message 💌
 
-#### 5.1 Entrer l'Adresse du Destinataire
-
-```
-┌─────────────────────────────┐
-│  Recipient address (0x...)  │ ← Collez l'adresse ici
-└─────────────────────────────┘
-```
-
-**Format** : `0x` suivi de 40 caractères hexadécimaux
-**Exemple** : `0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb`
-
-#### 5.2 Écrire votre Message
+#### 5.1 Enter Recipient Address
 
 ```
 ┌─────────────────────────────┐
-│  Type your message...       │ ← Max 32 caractères
+│  Recipient address (0x...)  │ ← Paste address here
 └─────────────────────────────┘
 ```
 
-**Limite** : 32 caractères maximum
-**Caractères autorisés** : Lettres, chiffres, espaces, ponctuation
+**Format**: `0x` followed by 40 hexadecimal characters
+**Example**: `0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb`
 
-#### 5.3 Envoyer
+#### 5.2 Type Your Message
 
-1. **Cliquez sur le bouton Send** 📨
-2. **Animation** : Un message volant apparaît ! 💌
-3. **MetaMask** : Confirmez la transaction (frais de gaz)
-4. **Confirmation** : "Message sent (Simulated)"
+```
+┌─────────────────────────────┐
+│  Type your message...       │ ← Max 32 characters
+└─────────────────────────────┘
+```
+
+**Limit**: 32 characters maximum
+**Allowed Characters**: Letters, numbers, spaces, punctuation
+
+#### 5.3 Send
+
+1. **Click the Send button** 📨
+2. **Animation**: A flying message appears! 💌
+3. **MetaMask**: Confirm the transaction (gas fees)
+4. **Confirmation**: "Message sent (Simulated)"
 
 ```
      💌
     /  \
-   /    \  ← Animation de message volant
+   /    \  ← Flying message animation
   /______\
 ```
 
 ---
 
-## 🔒 Sécurité & Confidentialité
+## 🔒 Security & Privacy
 
-### Chiffrement FHE
-Vos messages sont chiffrés avec **Fully Homomorphic Encryption** :
-- ✅ Chiffrement de bout en bout
-- ✅ Seuls vous et le destinataire pouvez lire
-- ✅ Même le réseau ne peut pas déchiffrer
+### FHE Encryption
+Your messages are encrypted with **Fully Homomorphic Encryption**:
+- ✅ End-to-end encryption
+- ✅ Only you and the recipient can read
+- ✅ Even the network cannot decrypt
 
 ### Permissions
-Le smart contract utilise `FHE.allow()` pour garantir que :
-- L'**expéditeur** peut lire le message
-- Le **destinataire** peut lire le message
-- **Personne d'autre** ne peut accéder au contenu
+The smart contract uses `FHE.allow()` to ensure that:
+- The **sender** can read the message
+- The **recipient** can read the message
+- **No one else** can access the content
 
 ---
 
-## 💡 Conseils & Astuces
+## 💡 Tips & Tricks
 
-### ✅ Bonnes Pratiques
-- **Vérifiez l'adresse** avant d'envoyer (irréversible !)
-- **Messages courts** : Max 32 caractères
-- **Gardez du Sepolia ETH** pour les frais de gaz
+### ✅ Best Practices
+- **Verify address** before sending (irreversible!)
+- **Short messages**: Max 32 characters
+- **Keep Sepolia ETH** for gas fees
 
-### ⚠️ Limitations Actuelles
-- **Gateway Zama** : Actuellement en mode dégradé
-- **Simulation** : Les messages sont simulés en attendant
-- **32 caractères** : Limite technique du contrat
+### ⚠️ Current Limitations
+- **Zama Gateway**: Currently in degraded mode
+- **Simulation**: Messages are simulated while waiting
+- **32 characters**: Technical limit of the contract
 
-### 🔄 Actualiser les Données
-- Cliquez sur **🔄** dans l'Inbox pour rafraîchir
-- Les statistiques se mettent à jour automatiquement
-
----
-
-## 🆘 Résolution de Problèmes
-
-### Problème : "Please install MetaMask!"
-**Solution** : Installez l'extension MetaMask depuis [metamask.io](https://metamask.io/)
-
-### Problème : "Invalid recipient address"
-**Solution** : Vérifiez que l'adresse commence par `0x` et contient 42 caractères
-
-### Problème : "Message too long"
-**Solution** : Réduisez votre message à 32 caractères maximum
-
-### Problème : Pas de popup MetaMask
-**Solution** : 
-- Le site est en mode simulation (gateway Zama down)
-- Les transactions réelles seront activées une fois le gateway opérationnel
+### 🔄 Refresh Data
+- Click **🔄** in Inbox to refresh
+- Statistics update automatically
 
 ---
 
-## 📊 Comprendre l'Interface
+## 🆘 Troubleshooting
+
+### Problem: "Please install MetaMask!"
+**Solution**: Install the MetaMask extension from [metamask.io](https://metamask.io/)
+
+### Problem: "Invalid recipient address"
+**Solution**: Verify the address starts with `0x` and contains 42 characters
+
+### Problem: "Message too long"
+**Solution**: Reduce your message to 32 characters maximum
+
+### Problem: No MetaMask popup
+**Solution**: 
+- The site is in simulation mode (Zama gateway down)
+- Real transactions will be enabled once the gateway is operational
+
+---
+
+## 📊 Understanding the Interface
 
 ### Header
-- **Private Chat** : Logo de l'app
-- **Connect Wallet** : Connexion MetaMask
-- **Adresse** : Votre wallet (une fois connecté)
+- **Private Chat**: App Logo
+- **Connect Wallet**: MetaMask Connection
+- **Address**: Your wallet (once connected)
 
-### Statistiques
-- **Envoyés** : Compteur bleu
-- **Reçus** : Compteur violet
-- **Total** : Compteur vert
+### Statistics
+- **Sent**: Blue counter
+- **Received**: Purple counter
+- **Total**: Green counter
 
 ### Inbox
-- **Messages reçus** : Nombre de messages
-- **🔄 Refresh** : Actualiser
+- **Messages Received**: Number of messages
+- **🔄 Refresh**: Refresh
 
-### Historique
-- **5 derniers messages** : Liste scrollable
-- **Détails** : Destinataire, contenu, heure
+### History
+- **Last 5 messages**: Scrollable list
+- **Details**: Recipient, content, time
 
-### Zone d'Envoi
-- **Champ 1** : Adresse du destinataire
-- **Champ 2** : Votre message
-- **Bouton Send** : Envoyer
+### Sending Area
+- **Field 1**: Recipient address
+- **Field 2**: Your message
+- **Send Button**: Send
 
 ---
 
-## 🌟 Fonctionnalités Avancées
+## 🌟 Advanced Features
 
-### Persistance Locale
-Vos statistiques et historique sont **sauvegardés localement** :
-- Conservés entre les sessions
-- Stockés dans votre navigateur
-- Effacés si vous videz le cache
+### Local Persistence
+Your statistics and history are **saved locally**:
+- Kept between sessions
+- Stored in your browser
+- Cleared if you clear cache
 
-### Animation d'Envoi
-À chaque envoi, profitez d'une **animation élégante** :
-- Message volant du bas vers le haut
-- Rotation 360°
-- Effets lumineux
+### Sending Animation
+With every send, enjoy an **elegant animation**:
+- Flying message from bottom to top
+- 360° rotation
+- Lighting effects
 
 ---
 
 ## 📞 Support
 
-### Questions ?
-- Consultez le [README.md](../README.md)
-- Vérifiez le [DEPLOYMENT.md](../DEPLOYMENT.md)
+### Questions?
+- Check [README.md](../README.md)
+- Check [DEPLOYMENT.md](../DEPLOYMENT.md)
 
-### Bugs ?
-- Ouvrez une issue sur GitHub
-- Décrivez le problème en détail
-
----
-
-## 🎉 Profitez de Private Chat !
-
-Vous êtes maintenant prêt à envoyer des messages chiffrés sur la blockchain ! 🚀
-
-**Rappel** : Vos messages sont **privés** et **sécurisés** grâce au chiffrement FHE. Seuls vous et votre destinataire pouvez les lire.
+### Bugs?
+- Open an issue on GitHub
+- Describe the problem in detail
 
 ---
 
-*Dernière mise à jour : Décembre 2024*
+## 🎉 Enjoy Private Chat!
+
+You are now ready to send encrypted messages on the blockchain! 🚀
+
+**Reminder**: Your messages are **private** and **secure** thanks to FHE encryption. Only you and your recipient can read them.
+
+---
+
+*Last updated: December 2024*

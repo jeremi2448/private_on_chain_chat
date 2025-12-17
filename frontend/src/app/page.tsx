@@ -363,7 +363,7 @@ export default function Home() {
             <div className="sticky top-0 bg-slate-900 border-b border-slate-800 p-6 flex justify-between items-center">
               <h2 className="text-xl font-bold flex items-center gap-2">
                 <HelpCircle className="w-6 h-6 text-indigo-400" />
-                Guide d'Utilisation
+                User Guide
               </h2>
               <button onClick={() => setShowHelp(false)} className="p-2 hover:bg-slate-800 rounded-lg transition-colors">
                 <X className="w-5 h-5" />
@@ -371,50 +371,50 @@ export default function Home() {
             </div>
             <div className="p-6 space-y-6 text-sm">
               <section>
-                <h3 className="font-semibold text-lg mb-3 text-indigo-400">🚀 Démarrage Rapide</h3>
+                <h3 className="font-semibold text-lg mb-3 text-indigo-400">🚀 Quick Start</h3>
                 <ol className="space-y-2 list-decimal list-inside text-slate-300">
-                  <li>Cliquez sur "Connect Wallet" pour connecter MetaMask</li>
-                  <li>Assurez-vous d'être sur le réseau Sepolia</li>
-                  <li>Obtenez du Sepolia ETH gratuit sur un faucet</li>
+                  <li>Click "Connect Wallet" to connect MetaMask</li>
+                  <li>Ensure you are on the Sepolia network</li>
+                  <li>Get free Sepolia ETH from a faucet</li>
                 </ol>
               </section>
 
               <section>
-                <h3 className="font-semibold text-lg mb-3 text-purple-400">📤 Envoyer un Message</h3>
+                <h3 className="font-semibold text-lg mb-3 text-purple-400">📤 Sending a Message</h3>
                 <ol className="space-y-2 list-decimal list-inside text-slate-300">
-                  <li>Entrez l'adresse Ethereum du destinataire (0x...)</li>
-                  <li>Tapez votre message (max 32 caractères)</li>
-                  <li>Cliquez sur Send et confirmez dans MetaMask</li>
-                  <li>Profitez de l'animation ! 💌</li>
+                  <li>Enter the recipient's Ethereum address (0x...)</li>
+                  <li>Type your message (max 32 chars)</li>
+                  <li>Click Send and confirm in MetaMask</li>
+                  <li>Enjoy the animation! 💌</li>
                 </ol>
               </section>
 
               <section>
-                <h3 className="font-semibold text-lg mb-3 text-emerald-400">📊 Statistiques</h3>
-                <p className="text-slate-300 mb-2">Le dashboard affiche :</p>
+                <h3 className="font-semibold text-lg mb-3 text-emerald-400">📊 Statistics</h3>
+                <p className="text-slate-300 mb-2">The dashboard displays:</p>
                 <ul className="space-y-1 list-disc list-inside text-slate-400">
-                  <li><span className="text-indigo-400">Envoyés</span> : Messages que vous avez envoyés</li>
-                  <li><span className="text-purple-400">Reçus</span> : Messages reçus (cliquez 🔄 pour actualiser)</li>
-                  <li><span className="text-emerald-400">Total</span> : Somme des deux</li>
+                  <li><span className="text-indigo-400">Sent</span>: Messages you have sent</li>
+                  <li><span className="text-purple-400">Received</span>: Messages received (click 🔄 to refresh)</li>
+                  <li><span className="text-emerald-400">Total</span>: Sum of both</li>
                 </ul>
               </section>
 
               <section>
-                <h3 className="font-semibold text-lg mb-3 text-yellow-400">🔒 Confidentialité</h3>
-                <p className="text-slate-300">Vos messages sont chiffrés avec <strong>FHE (Fully Homomorphic Encryption)</strong>. Seuls vous et le destinataire pouvez les lire !</p>
+                <h3 className="font-semibold text-lg mb-3 text-yellow-400">🔒 Privacy</h3>
+                <p className="text-slate-300">Your messages are encrypted with <strong>FHE (Fully Homomorphic Encryption)</strong>. Only you and the recipient can read them!</p>
               </section>
 
               <section className="bg-slate-800/50 p-4 rounded-lg">
                 <h3 className="font-semibold mb-2 text-red-400">⚠️ Important</h3>
                 <ul className="space-y-1 list-disc list-inside text-slate-400 text-xs">
-                  <li>Maximum 32 caractères par message</li>
-                  <li>Vérifiez l'adresse avant d'envoyer (irréversible)</li>
-                  <li>Gateway Zama actuellement en mode dégradé</li>
+                  <li>Maximum 32 characters per message</li>
+                  <li>Verify address before sending (irreversible)</li>
+                  <li>Zama Gateway currently in degraded mode</li>
                 </ul>
               </section>
 
               <div className="text-center pt-4 border-t border-slate-800">
-                <p className="text-xs text-slate-500">Pour plus de détails, consultez TUTORIAL.md sur GitHub</p>
+                <p className="text-xs text-slate-500">For more details, check TUTORIAL.md on GitHub</p>
               </div>
             </div>
           </div>

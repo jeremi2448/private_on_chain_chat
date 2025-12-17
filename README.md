@@ -2,14 +2,14 @@
 
 # 🔐 Private On-Chain Chat
 
-**Messagerie Chiffrée Décentralisée sur Blockchain**
+**Decentralized Encrypted Messaging on Blockchain**
 
 [![Sepolia](https://img.shields.io/badge/Network-Sepolia-blue)](https://sepolia.etherscan.io/)
 [![Zama FHE](https://img.shields.io/badge/Powered%20by-Zama%20FHE-purple)](https://www.zama.ai/)
 [![Next.js](https://img.shields.io/badge/Built%20with-Next.js-black)](https://nextjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-[🚀 Demo Live](#) • [📖 Documentation](TUTORIAL.md) • [🐛 Report Bug](#) • [✨ Request Feature](#)
+[🚀 Live Demo](#) • [📖 Documentation](TUTORIAL.md) • [🐛 Report Bug](#) • [✨ Request Feature](#)
 
 ![Private Chat Banner](https://via.placeholder.com/800x200/1e293b/818cf8?text=Private+On-Chain+Chat)
 
@@ -17,158 +17,158 @@
 
 ---
 
-## 🌟 Aperçu
+## 🌟 Overview
 
-**Private On-Chain Chat** est une application de messagerie décentralisée qui utilise le **chiffrement homomorphe complet (FHE)** de Zama pour garantir une confidentialité absolue. Vos messages sont chiffrés de bout en bout et stockés sur la blockchain Ethereum, rendant impossible leur lecture par des tiers.
+**Private On-Chain Chat** is a decentralized messaging application that leverages Zama's **Fully Homomorphic Encryption (FHE)** to ensure absolute privacy. Your messages are end-to-end encrypted and stored on the Ethereum blockchain, making them readable only by you and the recipient.
 
-### ✨ Pourquoi Private Chat ?
+### ✨ Why Private Chat?
 
-- 🔒 **Confidentialité Absolue** : Chiffrement FHE - seuls vous et votre destinataire pouvez lire les messages
-- 🌐 **Décentralisé** : Aucun serveur central, données stockées sur blockchain
-- 💎 **Transparent** : Smart contracts open source et vérifiables
-- 🚀 **Moderne** : Interface élégante avec animations fluides
-- 📊 **Statistiques** : Dashboard personnel avec historique et métriques
+- 🔒 **Absolute Privacy**: FHE encryption - only you and your recipient can read messages
+- 🌐 **Decentralized**: No central server, data stored on blockchain
+- 💎 **Transparent**: Open source and verifiable smart contracts
+- 🚀 **Modern**: Sleek interface with smooth animations
+- 📊 **Statistics**: Personal dashboard with history and metrics
 
 ---
 
-## 🎯 Fonctionnalités
+## 🎯 Features
 
-### 💬 Messagerie Chiffrée
-- ✅ Messages texte jusqu'à 32 caractères
-- ✅ Chiffrement FHE de bout en bout
-- ✅ Validation d'adresse Ethereum
-- ✅ Animation d'envoi captivante
+### 💬 Encrypted Messaging
+- ✅ Text messages up to 32 characters
+- ✅ End-to-end FHE encryption
+- ✅ Ethereum address validation
+- ✅ Captivating sending animation
 
-### 📊 Dashboard Personnel
-- ✅ Statistiques en temps réel (envoyés/reçus/total)
-- ✅ Historique des 5 derniers messages
-- ✅ Inbox avec compteur de messages
-- ✅ Persistance locale (localStorage)
+### 📊 Personal Dashboard
+- ✅ Real-time statistics (sent/received/total)
+- ✅ History of last 5 messages
+- ✅ Inbox with message counter
+- ✅ Local persistence (localStorage)
 
-### 🎨 Interface Moderne
-- ✅ Design dark mode élégant
-- ✅ Animations fluides et micro-interactions
+### 🎨 Modern Interface
+- ✅ Elegant dark mode design
+- ✅ Smooth animations and micro-interactions
 - ✅ Responsive (mobile/desktop)
-- ✅ Aide intégrée avec tutoriel
+- ✅ Integrated help with tutorial
 
 ---
 
-## 🚀 Démarrage Rapide
+## 🚀 Quick Start
 
-### Prérequis
+### Prerequisites
 
-- [MetaMask](https://metamask.io/) installé
-- Sepolia ETH ([obtenir gratuitement](https://sepoliafaucet.com/))
-- Node.js 18+ (pour développement)
+- [MetaMask](https://metamask.io/) installed
+- Sepolia ETH ([get for free](https://sepoliafaucet.com/))
+- Node.js 18+ (for development)
 
-### 🌐 Utilisation (Non-Technique)
+### 🌐 Usage (Non-Technical)
 
-1. **Visitez l'application** : [Lien de démo](#)
-2. **Connectez MetaMask** : Cliquez sur "Connect Wallet"
-3. **Envoyez un message** :
-   - Entrez l'adresse du destinataire (0x...)
-   - Tapez votre message (max 32 caractères)
-   - Cliquez sur "Send" et confirmez dans MetaMask
-4. **Consultez vos stats** : Dashboard mis à jour automatiquement
+1. **Visit the application**: [Demo Link](#)
+2. **Connect MetaMask**: Click "Connect Wallet"
+3. **Send a message**:
+   - Enter recipient address (0x...)
+   - Type your message (max 32 chars)
+   - Click "Send" and confirm in MetaMask
+4. **Check your stats**: Dashboard updates automatically
 
-📖 **Guide complet** : [TUTORIAL.md](TUTORIAL.md)
+📖 **Full Guide**: [TUTORIAL.md](TUTORIAL.md)
 
 ---
 
-## 💻 Installation (Développeurs)
+## 💻 Installation (Developers)
 
-### 1️⃣ Cloner le Projet
+### 1️⃣ Clone the Project
 
 ```bash
-git clone https://github.com/VOTRE_USERNAME/private-on-chain-chat.git
+git clone https://github.com/YOUR_USERNAME/private-on-chain-chat.git
 cd private-on-chain-chat
 ```
 
-### 2️⃣ Configuration des Contrats
+### 2️⃣ Contract Configuration
 
 ```bash
 cd contracts
 npm install
 
-# Configurer l'environnement
+# Configure environment
 cp .env.example .env
-# Éditez .env avec votre PRIVATE_KEY et SEPOLIA_RPC_URL
+# Edit .env with your PRIVATE_KEY and SEPOLIA_RPC_URL
 ```
 
-### 3️⃣ Configuration du Frontend
+### 3️⃣ Frontend Configuration
 
 ```bash
 cd ../frontend
 npm install
 ```
 
-### 4️⃣ Lancer en Local
+### 4️⃣ Run Locally
 
 ```bash
 npm run dev
 ```
 
-Ouvrez [http://localhost:3000](http://localhost:3000) 🎉
+Open [http://localhost:3000](http://localhost:3000) 🎉
 
 ---
 
-## 📦 Structure du Projet
+## 📦 Project Structure
 
 ```
 private-on-chain-chat/
-├── contracts/              # Smart contracts Solidity
+├── contracts/              # Solidity Smart contracts
 │   ├── contracts/
-│   │   └── PrivateChat.sol # Contrat principal
+│   │   └── PrivateChat.sol # Main contract
 │   ├── scripts/
-│   │   ├── deploy.ts       # Script de déploiement
-│   │   └── interact.ts     # Script d'interaction
-│   └── test/               # Tests unitaires
+│   │   ├── deploy.ts       # Deployment script
+│   │   └── interact.ts     # Interaction script
+│   └── test/               # Unit tests
 │
-├── frontend/               # Application Next.js
+├── frontend/               # Next.js Application
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── page.tsx    # Page principale
+│   │   │   ├── page.tsx    # Main page
 │   │   │   └── animations.css
 │   │   └── types/
-│   │       └── global.d.ts # Types TypeScript
-│   └── public/             # Assets statiques
+│   │       └── global.d.ts # TypeScript types
+│   └── public/             # Static assets
 │
-├── TUTORIAL.md             # Guide utilisateur complet
-├── DEPLOYMENT.md           # Guide de déploiement
-└── README.md               # Ce fichier
+├── TUTORIAL.md             # Full user guide
+├── DEPLOYMENT.md           # Deployment guide
+└── README.md               # This file
 ```
 
 ---
 
-## 🔧 Technologies Utilisées
+## 🔧 Technologies Used
 
 ### Smart Contracts
-- **Solidity** `^0.8.24` - Langage de smart contracts
-- **Hardhat** - Framework de développement
-- **Zama FHEVM** - Chiffrement homomorphe
-- **ethers.js** - Interaction blockchain
+- **Solidity** `^0.8.24` - Smart contract language
+- **Hardhat** - Development framework
+- **Zama FHEVM** - Homomorphic encryption
+- **ethers.js** - Blockchain interaction
 
 ### Frontend
-- **Next.js 16** - Framework React
-- **TypeScript** - Typage statique
-- **Tailwind CSS 4** - Styling moderne
-- **fhevmjs** - Client FHE
-- **Lucide React** - Icônes
+- **Next.js 16** - React framework
+- **TypeScript** - Static typing
+- **Tailwind CSS 4** - Modern styling
+- **fhevmjs** - FHE client
+- **Lucide React** - Icons
 
 ---
 
 ## 📜 Smart Contract
 
-### Contrat Déployé
+### Deployed Contract
 
-- **Réseau** : Sepolia Testnet
-- **Adresse** : `0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2`
-- **Explorer** : [Voir sur Sepolia Etherscan](https://sepolia.etherscan.io/address/0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2)
+- **Network**: Sepolia Testnet
+- **Address**: `0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2`
+- **Explorer**: [View on Sepolia Etherscan](https://sepolia.etherscan.io/address/0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2)
 
-### Fonctions Principales
+### Key Functions
 
 ```solidity
-// Envoyer un message chiffré
+// Send an encrypted message
 function sendMessage(
     address _to,
     bytes32 _chunk1Handle,
@@ -179,65 +179,65 @@ function sendMessage(
     uint32 _ttl
 ) external;
 
-// Obtenir le nombre de messages reçus
+// Get received message count
 function getMessageCount() external view returns (uint256);
 
-// Récupérer un message
+// Retrieve a message
 function getMessage(uint256 index) external view returns (...);
 ```
 
 ---
 
-## 🔒 Sécurité & Confidentialité
+## 🔒 Security & Privacy
 
-### Chiffrement FHE
+### FHE Encryption
 
-Les messages utilisent le **Fully Homomorphic Encryption (FHE)** de Zama :
+Messages use Zama's **Fully Homomorphic Encryption (FHE)**:
 
 ```solidity
-// Seuls l'expéditeur et le destinataire peuvent déchiffrer
-FHE.allow(encryptedContent, _to);        // Destinataire
-FHE.allow(encryptedContent, msg.sender); // Expéditeur
+// Only sender and recipient can decrypt
+FHE.allow(encryptedContent, _to);        // Recipient
+FHE.allow(encryptedContent, msg.sender); // Sender
 ```
 
-### Garanties
+### Guarantees
 
-- ✅ **Chiffrement de bout en bout** : Messages chiffrés côté client
-- ✅ **Confidentialité absolue** : Impossible à déchiffrer par des tiers
-- ✅ **Stockage sécurisé** : Données chiffrées sur blockchain
-- ✅ **Permissions strictes** : Accès limité via `FHE.allow()`
-
----
-
-## 📊 Statistiques & Métriques
-
-L'application track automatiquement :
-
-- 📤 **Messages envoyés** : Compteur personnel
-- 📬 **Messages reçus** : Mis à jour via refresh
-- 📈 **Total** : Somme des deux
-- 🕐 **Historique** : 5 derniers messages avec timestamps
-
-Toutes les données sont **sauvegardées localement** dans votre navigateur.
+- ✅ **End-to-end encryption**: Messages encrypted client-side
+- ✅ **Absolute privacy**: Impossible for third parties to decrypt
+- ✅ **Secure storage**: Encrypted data on blockchain
+- ✅ **Strict permissions**: Access limited via `FHE.allow()`
 
 ---
 
-## 🛠️ Développement
+## 📊 Statistics & Metrics
 
-### Compiler les Contrats
+The application automatically tracks:
+
+- 📤 **Sent messages**: Personal counter
+- 📬 **Received messages**: Updated via refresh
+- 📈 **Total**: Sum of both
+- 🕐 **History**: Last 5 messages with timestamps
+
+All data is **saved locally** in your browser.
+
+---
+
+## 🛠️ Development
+
+### Compile Contracts
 
 ```bash
 cd contracts
 npx hardhat compile
 ```
 
-### Tester les Contrats
+### Test Contracts
 
 ```bash
 npx hardhat test
 ```
 
-### Déployer sur Sepolia
+### Deploy to Sepolia
 
 ```bash
 npx hardhat run scripts/deploy.ts --network sepolia
@@ -252,57 +252,57 @@ npm run build
 
 ---
 
-## 🚀 Déploiement
+## 🚀 Deployment
 
-### Option 1 : Vercel (Recommandé)
+### Option 1: Vercel (Recommended)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/VOTRE_USERNAME/private-on-chain-chat)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/private-on-chain-chat)
 
-1. Connectez votre repo GitHub
-2. Configurez le root directory : `frontend`
-3. Déployez !
+1. Connect your GitHub repo
+2. Configure root directory: `frontend`
+3. Deploy!
 
-### Option 2 : Manuel
+### Option 2: Manual
 
-Consultez [DEPLOYMENT.md](DEPLOYMENT.md) pour les instructions détaillées.
+Check [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 
 ---
 
 ## 📖 Documentation
 
-- 📚 [Guide Utilisateur Complet](TUTORIAL.md)
-- 🚀 [Guide de Déploiement](DEPLOYMENT.md)
-- 🔗 [Documentation Zama FHE](https://docs.zama.ai/fhevm)
-- 📘 [Documentation Next.js](https://nextjs.org/docs)
+- 📚 [Full User Guide](TUTORIAL.md)
+- 🚀 [Deployment Guide](DEPLOYMENT.md)
+- 🔗 [Zama FHE Documentation](https://docs.zama.ai/fhevm)
+- 📘 [Next.js Documentation](https://nextjs.org/docs)
 
 ---
 
-## ⚠️ Limitations Actuelles
+## ⚠️ Current Limitations
 
-- **32 caractères max** par message (limitation technique FHE)
-- **ASCII uniquement** (pas d'emojis pour l'instant)
-- **Gateway Zama** : Actuellement en mode dégradé (simulation)
-- **Frais de gaz** : Requis pour chaque message (Sepolia ETH)
+- **Max 32 characters** per message (FHE technical limitation)
+- **ASCII only** (no emojis for now)
+- **Zama Gateway**: Currently in degraded mode (simulation)
+- **Gas fees**: Required for each message (Sepolia ETH)
 
 ---
 
 ## 🗺️ Roadmap
 
-### ✅ Phase 1 - MVP (Complété)
-- [x] Smart contract avec FHE
-- [x] Frontend Next.js
-- [x] Statistiques et historique
-- [x] Documentation complète
+### ✅ Phase 1 - MVP (Completed)
+- [x] Smart contract with FHE
+- [x] Next.js Frontend
+- [x] Statistics and history
+- [x] Complete documentation
 
-### 🔄 Phase 2 - Améliorations (En cours)
-- [ ] Intégration réelle avec gateway Zama
-- [ ] Support de messages plus longs
-- [ ] Notifications en temps réel
-- [ ] Thèmes personnalisables
+### 🔄 Phase 2 - Improvements (In Progress)
+- [ ] Real integration with Zama gateway
+- [ ] Support for longer messages
+- [ ] Real-time notifications
+- [ ] Customizable themes
 
-### 🔮 Phase 3 - Avancé (Futur)
-- [ ] Conversations de groupe
-- [ ] Stockage IPFS
+### 🔮 Phase 3 - Advanced (Future)
+- [ ] Group conversations
+- [ ] IPFS storage
 - [ ] Mobile app (React Native)
 - [ ] Zero-Knowledge Proofs
 
@@ -310,39 +310,45 @@ Consultez [DEPLOYMENT.md](DEPLOYMENT.md) pour les instructions détaillées.
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Voici comment participer :
+Contributions are welcome! Here's how to participate:
 
-1. **Fork** le projet
-2. **Créez** une branche (`git checkout -b feature/AmazingFeature`)
-3. **Commit** vos changements (`git commit -m 'Add AmazingFeature'`)
-4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
-5. **Ouvrez** une Pull Request
+1. **Fork** the project
+2. **Create** a branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
 
 ---
 
-## 🙏 Remerciements
+## 📄 License
 
-- [Zama](https://www.zama.ai/) - Pour la technologie FHE révolutionnaire
-- [Ethereum](https://ethereum.org/) - Pour la plateforme blockchain
-- [Next.js](https://nextjs.org/) - Pour le framework frontend
-- [Vercel](https://vercel.com/) - Pour l'hébergement
+This project is licensed under the **MIT** License. See [LICENSE](LICENSE) for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [Zama](https://www.zama.ai/) - For the revolutionary FHE technology
+- [Ethereum](https://ethereum.org/) - For the blockchain platform
+- [Next.js](https://nextjs.org/) - For the frontend framework
+- [Vercel](https://vercel.com/) - For hosting
 
 ---
 
 ## 📞 Contact & Support
 
-- 🐛 **Issues** : [GitHub Issues](https://github.com/jeremi2448/private-on-chain-chat/issues)
-- 💬 **Discussions** : [GitHub Discussions](https://github.com/jeremi2448/private-on-chain-chat/discussions)
-- 📧 **Email** : treepiton@gmail.com
-- X  **Twitter** : @Tree14735795
-- **Discord** : rib2874
+- 🐛 **Issues**: [GitHub Issues](https://github.com/jeremi2448/private-on-chain-chat/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/jeremi2448/private-on-chain-chat/discussions)
+- 📧 **Email**: treepiton@gmail.com
+- X **Twitter**: @Tree14735795
+- **Discord**: rib2874
 
 ---
 
 <div align="center">
 
-**Fait avec ❤️ en utilisant la technologie FHE de Zama**
+**Made with ❤️ using Zama FHE technology**
 
-[⬆ Retour en haut](#-private-on-chain-chat)
+[⬆ Back to top](#-private-on-chain-chat)
 
 </div>
