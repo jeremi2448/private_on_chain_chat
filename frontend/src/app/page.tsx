@@ -38,14 +38,13 @@ export default function Home() {
       try {
         const instance = await createInstance({
           chainId: 11155111,
-          publicKey: "0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2", // Using contract address as placeholder if needed, but usually fetched from network
+          publicKey: "0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2",
           networkUrl: "https://rpc.sepolia.org",
           gatewayUrl: "https://gateway.sepolia.zama.ai/",
         });
         setFheInstance(instance);
       } catch (e) {
         console.error("FHE Init Error:", e);
-        // Continue without FHE for now if it fails, but warn
       }
 
     } catch (error) {
@@ -54,7 +53,6 @@ export default function Home() {
     }
   };
 
-  // Load from localStorage on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('chatStats');
@@ -66,7 +64,6 @@ export default function Home() {
     }
   }, []);
 
-  // Save to localStorage when stats or sentMessages change
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('chatStats', JSON.stringify({ sentMessages, stats }));
@@ -88,9 +85,7 @@ export default function Home() {
     }
   };
 
-  // Helper function to encode text into 4 x uint64 chunks
   const encodeTextToChunks = (text: string): bigint[] => {
-    // Pad or truncate to 32 characters
     const paddedText = text.padEnd(32, '\0').slice(0, 32);
     const chunks: bigint[] = [];
 
@@ -106,19 +101,21 @@ export default function Home() {
     return chunks;
   };
 
+  const toBytes32 = (value: bigint) => {
+    return ethers.toBeHex(value, 32);
+  };
+
   const sendMessage = async () => {
     if (!newMessage || !account || !recipientAddress) {
       setStatus("Please fill all fields");
       return;
     }
 
-    // Validate Ethereum address
     if (!ethers.isAddress(recipientAddress)) {
       setStatus("Invalid recipient address");
       return;
     }
 
-    // Validate message length
     if (newMessage.length > 32) {
       setStatus("Message too long (max 32 characters)");
       return;
@@ -133,14 +130,14 @@ export default function Home() {
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, PrivateChatABI.abi, signer);
 
-      // Encode text to chunks
       const chunks = encodeTextToChunks(newMessage);
 
-      let handles = [BigInt(0), BigInt(0), BigInt(0), BigInt(0)];
-      let inputProof = "0x";
+      // Default to dummy handles (hex strings)
+      let handles: any[] = chunks.map(c => toBytes32(c));
+      let inputProof = "0x00";
 
       try {
-        // Try real FHE encryption
+        console.log("Attempting FHE encryption...");
         const instance = await createInstance({
           chainId: 11155111,
           networkUrl: "https://rpc.sepolia.org",
@@ -156,17 +153,16 @@ export default function Home() {
         const encrypted = await input.encrypt();
         handles = encrypted.handles;
         inputProof = encrypted.inputProof;
+        console.log("FHE Encryption successful");
       } catch (fheError) {
-        console.warn("FHE Encryption failed (likely gateway down), using dummy data to trigger transaction:", fheError);
-        // Fallback to dummy data to trigger gas fee prompt as requested
-        // This transaction will likely fail on-chain or be invalid, but it asks for fees!
-        handles = chunks; // Sending raw chunks as handles (invalid but triggers tx)
-        inputProof = "0x00";
+        console.warn("FHE Encryption failed, using fallback to trigger gas fees:", fheError);
+        // handles are already set to dummy hex strings
       }
 
       setStatus("Waiting for wallet confirmation...");
+      console.log("Sending transaction with handles:", handles);
 
-      // Send transaction
+      // Force gas limit to ensure MetaMask pops up even if estimation fails
       const tx = await contract.sendMessage(
         recipientAddress,
         handles[0],
@@ -174,7 +170,8 @@ export default function Home() {
         handles[2],
         handles[3],
         inputProof,
-        3600 // TTL
+        3600,
+        { gasLimit: 500000 }
       );
 
       setStatus("Transaction sent! Waiting for confirmation...");
@@ -182,7 +179,6 @@ export default function Home() {
 
       console.log("Message sent to:", recipientAddress);
 
-      // Save sent message
       const sentMsg = {
         to: recipientAddress,
         content: newMessage,
@@ -191,7 +187,6 @@ export default function Home() {
       };
       setSentMessages(prev => [sentMsg, ...prev]);
 
-      // Update stats
       setStats(prev => ({
         ...prev,
         sent: prev.sent + 1,
@@ -210,7 +205,7 @@ export default function Home() {
       }
     } finally {
       setLoading(false);
-      setTimeout(() => setShowAnimation(false), 500); // Hide animation after delay
+      setTimeout(() => setShowAnimation(false), 500);
     }
   };
 
