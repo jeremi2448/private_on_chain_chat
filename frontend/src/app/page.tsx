@@ -38,10 +38,9 @@ export default function Home() {
       try {
         const instance = await createInstance({
           chainId: 11155111,
-          publicKey: "0xF2c786CEc8CF878c73a8640E3F912831eFdB75c2",
           networkUrl: "https://rpc.sepolia.org",
           gatewayUrl: "https://gateway.sepolia.zama.ai/",
-        });
+        } as any);
         setFheInstance(instance);
       } catch (e) {
         console.error("FHE Init Error:", e);
@@ -134,7 +133,7 @@ export default function Home() {
 
       // Default to dummy handles (hex strings)
       let handles: any[] = chunks.map(c => toBytes32(c));
-      let inputProof = "0x00";
+      let inputProof: any = "0x00";
 
       try {
         console.log("Attempting FHE encryption...");
@@ -142,7 +141,7 @@ export default function Home() {
           chainId: 11155111,
           networkUrl: "https://rpc.sepolia.org",
           gatewayUrl: "https://gateway.sepolia.zama.ai/",
-        });
+        } as any);
 
         const input = instance.createEncryptedInput(CONTRACT_ADDRESS, account);
         input.add64(chunks[0]);
