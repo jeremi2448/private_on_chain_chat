@@ -26,4 +26,6 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   }
+}"scripts": {
+  "build": "NEXT_DISABLE_TURBOPACK=1 next build"
 }
