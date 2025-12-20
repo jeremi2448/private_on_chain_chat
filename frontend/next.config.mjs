@@ -1,7 +1,8 @@
-/* @type {import('next').NextConfig} */
+js
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    runtime: "nodejs", 
+    runtime: "nodejs",
   },
 
   webpack: (config, { isServer }) => {
@@ -26,3 +27,4 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
