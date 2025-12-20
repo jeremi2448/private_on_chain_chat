@@ -1,11 +1,10 @@
-/** @type {import('next').NextConfig} */
+/* @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    runtime: "nodejs", // OBLIGATOIRE pour crypto / FHE
+    runtime: "nodejs", 
   },
 
   webpack: (config, { isServer }) => {
-    // ⚠️ NE PAS désactiver crypto
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -18,7 +17,6 @@ const nextConfig = {
       };
     }
 
-    // WASM OK mais contrôlé
     config.experiments = {
       asyncWebAssembly: true,
     };
